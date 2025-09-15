@@ -9,7 +9,7 @@ class Usuario(models.Model):
     data_criacao = models.DateTimeField(timezone.now())
 
     def __str__(self):
-        return self.Nome,self.data_criacao
+        return f"{self.Nome},{self.data_criacao},{self.email}."
 
 class emprestimo(models.Model):
     pessoa=models.ForeignKey(Usuario, on_delete=models.CASCADE)
