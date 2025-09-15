@@ -12,11 +12,11 @@ class Usuario(models.Model):
         return self.Nome,self.data_criacao
 
 class emprestimo(models.Model):
-    user=models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    livro=models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    pessoa=models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    livro=models.ForeignKey(Usuario,related_name='pb.liv+', on_delete=models.CASCADE)
     data_emprest=models.DateField()
     data_devol=models.DateField(null=True,blank=True)
     status=models.CharField(max_length=20,choices=[('Aberto,','Aberto'),('Devolvido','Devolvido')])
 
     def __str__(self):
-        return  f"{self.user}->{self.livro}"
+        return  f"{self.pessoa}->{self.livro}"
